@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"go.uber.org/atomic"
+	"go.uber.org/zap"
 
 	"github.com/RussellLuo/timingwheel"
 	"github.com/WuKongIM/WuKongIM/internal/monitor"
@@ -165,6 +166,8 @@ func (s *Server) Start() error {
 
 	s.timingWheel.Start()
 
+	s.initIPBlacklist() // 初始化ip黑名单
+
 	// 打印黑名单阻止情况
 	s.Schedule(5*time.Minute, func() {
 		s.printIpBlacklist()
@@ -218,14 +221,44 @@ func (s *Server) Schedule(interval time.Duration, f func()) *timingwheel.Timer {
 }
 
 func (s *Server) AllowIP(ip string) bool {
-	s.ipBlacklistLock.RLock()
-	defer s.ipBlacklistLock.RUnlock()
+	s.ipBlacklistLock.Lock()
+	defer s.ipBlacklistLock.Unlock()
 	blockCount, ok := s.ipBlacklist[ip]
 	if ok {
 		s.ipBlacklist[ip] = blockCount + 1
 		return false
 	}
 	return true
+}
+
+func (s *Server) AddIPBlacklist(ips []string) {
+	s.ipBlacklistLock.Lock()
+	defer s.ipBlacklistLock.Unlock()
+	for _, ip := range ips {
+		s.ipBlacklist[ip] = 0
+	}
+
+}
+
+func (s *Server) initIPBlacklist() {
+	ips, err := s.store.GetIPBlacklist()
+	if err != nil {
+		s.Error("获取ip黑名单失败！", zap.Error(err))
+		return
+	}
+	s.ipBlacklistLock.Lock()
+	defer s.ipBlacklistLock.Unlock()
+	for _, ip := range ips {
+		s.ipBlacklist[ip] = 0
+	}
+}
+
+func (s *Server) RemoveIPBlacklist(ips []string) {
+	s.ipBlacklistLock.Lock()
+	defer s.ipBlacklistLock.Unlock()
+	for _, ip := range ips {
+		delete(s.ipBlacklist, ip)
+	}
 }
 
 func (s *Server) printIpBlacklist() {
