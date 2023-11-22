@@ -2,6 +2,7 @@ package server
 
 import (
 	"fmt"
+	"math"
 	"net/http"
 	"strconv"
 	"time"
@@ -11,6 +12,7 @@ import (
 	"github.com/WuKongIM/WuKongIM/pkg/wklog"
 	"github.com/WuKongIM/WuKongIM/pkg/wkutil"
 	"github.com/WuKongIM/WuKongIM/version"
+	"go.uber.org/zap"
 )
 
 type VarzAPI struct {
@@ -58,9 +60,15 @@ func (v *VarzAPI) HandleVarz(c *wkhttp.Context) {
 func CreateVarz(s *Server) *Varz {
 	var rss, vss int64 // rss内存 vss虚拟内存
 	var pcpu float64   // cpu
-	pse.ProcUsage(&pcpu, &rss, &vss)
+	err := pse.ProcUsage(&pcpu, &rss, &vss)
+	if err != nil {
+		s.Error("获取系统资源失败", zap.Error(err))
+	}
 	opts := s.opts
 	connCount := s.dispatch.engine.ConnCount()
+	s.retryQueue.inFlightMutex.Lock()
+	retryQueueF := math.Max(float64(len(s.retryQueue.inFlightMessages)), float64(len(s.retryQueue.inFlightPQ)))
+	s.retryQueue.inFlightMutex.Unlock()
 	return &Varz{
 		ServerID:    fmt.Sprintf("%d", opts.ID),
 		ServerName:  "WuKongIM",
@@ -74,6 +82,7 @@ func CreateVarz(s *Server) *Varz {
 		InBytes:     s.inBytes.Load(),
 		OutBytes:    s.outBytes.Load(),
 		SlowClients: s.slowClients.Load(),
+		RetryQueue:  int64(retryQueueF),
 
 		TCPAddr:        opts.External.TCPAddr,
 		WSAddr:         opts.External.WSAddr,
@@ -103,6 +112,7 @@ type Varz struct {
 	InBytes     int64 `json:"in_bytes"`     // 流入字节数量
 	OutBytes    int64 `json:"out_bytes"`    // 流出字节数量
 	SlowClients int64 `json:"slow_clients"` // 慢客户端数量
+	RetryQueue  int64 `json:"retry_queue"`  // 重试队列数量
 
 	TCPAddr     string `json:"tcp_addr"`     // tcp地址
 	WSAddr      string `json:"ws_addr"`      // ws地址
