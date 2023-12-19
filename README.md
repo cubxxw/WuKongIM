@@ -29,10 +29,6 @@
 Demo
 --------
 
-**Practical Project**
-
-TangSengDaoDao (communication layer based on WuKongIM): https://github.com/TangSengDaoDao/TangSengDaoDaoServer
-
 **Chat Demo**
 
 ![image](./docs/demo.gif)
@@ -199,6 +195,31 @@ Star
 ------------
 
 Our team has been committed to the research and development of instant messaging. We need your encouragement. If you find this project helpful, please give it a star. Your support is our greatest motivation.
+
+
+Case
+---------------
+
+**Project**
+
+TangSengDaoDao
+
+**Github**
+
+https://github.com/TangSengDaoDao/TangSengDaoDaoServer
+
+**Screenshot**
+
+||||
+|:---:|:---:|:--:|
+|![](./docs/case/tsdaodao/screenshot/conversationlist.webp)|![](./docs/case/tsdaodao/screenshot/messages.webp)|![](./docs/case/tsdaodao/screenshot/robot.webp)|
+
+
+|||          |
+|:---:|:---:|:-------------------:|
+
+![](./docs/case/tsdaodao/screenshot/pc11.png)
+
 
 Wechat
 ---------------
