@@ -201,6 +201,7 @@ go run main.go --config  ./exampleconfig/cluster3.yaml
 |   WuKongIMJSSDK   |   [Github](https://github.com/WuKongIM/WuKongIMJSSDK)         |     [Example](https://github.com/WuKongIM/WuKongIMJSSDK/tree/main/examples)   | [文档](https://githubim.com/sdk/javascript.html)     |    悟空IM的 JS SDK  |
 |   WuKongIMFlutterSDK   |    [Github](https://github.com/WuKongIM/WuKongIMFlutterSDK)        |    [Example](https://github.com/WuKongIM/WuKongIMFlutterSDK/tree/master/example)   |[文档](https://githubim.com/sdk/flutter.html)    |    悟空IM的 Flutter SDK |
 |   WuKongIMReactNativeDemo   |   [Github](https://github.com/wengqianshan/WuKongIMReactNative)         |     无  |  无  |    悟空IM的 React Native Demo(由贡献者 [wengqianshan](https://github.com/wengqianshan) 提供)  |
+|   WuKongIMHarmonyOSSDK   |   [Github](https://github.com/WuKongIM/WuKongIMHarmonyOSSDK)         |     [Example](https://github.com/WuKongIM/WuKongIMHarmonyOSSDK/tree/main/entry)  |  [文档](https://githubim.com/sdk/harmonyos.html)   |   WuKongIM的纯血鸿蒙OS SDK  |
 
 
 
@@ -214,11 +215,13 @@ go run main.go --config  ./exampleconfig/cluster3.yaml
 后台截图
 ---------------
 
-![image](./docs/screen1.png)
-![image](./docs/screen2.png)
-![image](./docs/screen3.png)
-![image](./docs/screen4.png)
-![image](./docs/screen5.png)
+
+||||
+|:---:|:---:|:--:|
+|![](./docs/2.0-screen/screen-01.png)|![](./docs/2.0-screen/screen-02.png)|![](./docs/2.0-screen/screen-03.png)|
+|![](./docs/2.0-screen/screen-04.png)|![](./docs/2.0-screen/screen-05.png)|![](./docs/2.0-screen/screen-06.png)|
+|![](./docs/2.0-screen/screen-07.png)|![](./docs/2.0-screen/screen-08.png)|![](./docs/2.0-screen/screen-09.png)|
+|![](./docs/2.0-screen/screen-10.png)|![](./docs/2.0-screen/screen-11.png)||
 
 Star
 ---------------
