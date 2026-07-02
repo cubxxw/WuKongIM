@@ -1,0 +1,636 @@
+# Instincts generated from https://github.com/cubxxw/WuKongIM
+# Generated: 2026-07-02T13:39:45.305Z
+# Version: 2.0
+# NOTE: This file supplements (does not replace) any existing curated instincts.
+# High-confidence manually curated instincts should be preserved alongside these.
+
+---
+id: WuKongIM-commit-conventional
+trigger: "when writing a commit message"
+confidence: 0.85
+domain: git
+source: repo-analysis
+source_repo: https://github.com/cubxxw/WuKongIM
+---
+
+# WuKongIM Commit Conventional
+
+## Action
+
+Use conventional commit format with prefixes: feat, fix, docs
+
+## Evidence
+
+- 100 commits analyzed
+- Detected conventional commit pattern
+- Examples: docs: update readme, feat: code optimization
+
+---
+id: WuKongIM-commit-length
+trigger: "when writing a commit message"
+confidence: 0.6
+domain: git
+source: repo-analysis
+source_repo: https://github.com/cubxxw/WuKongIM
+---
+
+# WuKongIM Commit Length
+
+## Action
+
+Keep commit messages concise (~19 characters)
+
+## Evidence
+
+- Average commit message length: 19 chars
+- Based on 100 commits
+
+---
+id: WuKongIM-naming-files
+trigger: "when creating a new file"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/cubxxw/WuKongIM
+---
+
+# WuKongIM Naming Files
+
+## Action
+
+Use camelCase naming convention
+
+## Evidence
+
+- Analyzed file naming patterns in repository
+- Dominant pattern: camelCase
+
+---
+id: WuKongIM-import-relative
+trigger: "when importing modules"
+confidence: 0.75
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/cubxxw/WuKongIM
+---
+
+# WuKongIM Import Relative
+
+## Action
+
+Use relative imports for project files
+
+## Evidence
+
+- Import analysis shows relative import pattern
+- Example: import { x } from '../lib/x'
+
+---
+id: WuKongIM-export-style
+trigger: "when exporting from a module"
+confidence: 0.7
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/cubxxw/WuKongIM
+---
+
+# WuKongIM Export Style
+
+## Action
+
+Prefer mixed exports
+
+## Evidence
+
+- Export pattern analysis
+- Dominant style: mixed
+
+---
+id: WuKongIM-arch-type-based
+trigger: "when adding new code"
+confidence: 0.8
+domain: architecture
+source: repo-analysis
+source_repo: https://github.com/cubxxw/WuKongIM
+---
+
+# WuKongIM Arch Type Based
+
+## Action
+
+Place code in the appropriate type folder (components/, services/, utils/, etc.)
+
+## Evidence
+
+- Type-based module organization detected
+- Folders: 
+
+---
+id: WuKongIM-test-separate
+trigger: "when writing tests"
+confidence: 0.8
+domain: testing
+source: repo-analysis
+source_repo: https://github.com/cubxxw/WuKongIM
+---
+
+# WuKongIM Test Separate
+
+## Action
+
+Place tests in the tests/ or __tests__/ directory, mirroring src structure
+
+## Evidence
+
+- Separate test directory pattern detected
+- Tests live in dedicated test folders
+
+---
+id: WuKongIM-workflow-feature-development
+trigger: "when implementing a new feature"
+confidence: 0.9
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/cubxxw/WuKongIM
+---
+
+# WuKongIM Workflow Feature Development
+
+## Action
+
+Follow the feature-development workflow:
+1. Add feature implementation
+2. Add tests for feature
+3. Update documentation
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~10x per month
+- Files: **/*.test.*, **/api/**
+
+---
+id: WuKongIM-workflow-test-driven-development
+trigger: "when adding new functionality"
+confidence: 0.7
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/cubxxw/WuKongIM
+---
+
+# WuKongIM Workflow Test Driven Development
+
+## Action
+
+Follow the test-driven-development workflow:
+1. Write failing test
+2. Implement code to pass test
+3. Refactor if needed
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~4x per month
+- Files: **/*.test.*, **/*.spec.*, src/**/*
+
+---
+id: WuKongIM-workflow-update-readme-and-docs
+trigger: "when doing update readme and docs"
+confidence: 0.8
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/cubxxw/WuKongIM
+---
+
+# WuKongIM Workflow Update Readme And Docs
+
+## Action
+
+Follow the update-readme-and-docs workflow:
+1. Edit README.md and/or README_CN.md and/or README_EN.md
+2. Optionally update/add images or diagrams in docs/
+3. Commit changes with a docs/update message
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~6x per month
+- Files: README.md, README_CN.md, README_EN.md
+
+---
+id: WuKongIM-workflow-code-optimization-or-refactor
+trigger: "when doing code optimization or refactor"
+confidence: 0.6
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/cubxxw/WuKongIM
+---
+
+# WuKongIM Workflow Code Optimization Or Refactor
+
+## Action
+
+Follow the code-optimization-or-refactor workflow:
+1. Edit multiple files across internal/server/ and pkg/ directories
+2. Update go.mod and go.sum if dependencies or modules change
+3. Commit with 'feat: code optimization' or similar message
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~2x per month
+- Files: go.mod, go.sum, internal/server/*.go
+
+---
+id: WuKongIM-workflow-feature-development-with-multi-module-touch
+trigger: "when doing feature development with multi module touch"
+confidence: 0.65
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/cubxxw/WuKongIM
+---
+
+# WuKongIM Workflow Feature Development With Multi Module Touch
+
+## Action
+
+Follow the feature-development-with-multi-module-touch workflow:
+1. Edit or add files in internal/server/ and pkg/ directories
+2. Update or add tests (e.g., *_test.go files)
+3. Optionally update README or config files
+4. Commit with 'feat:' message
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~3x per month
+- Files: internal/server/*.go, pkg/**/*.go, pkg/**/*.go_bak
+
+---
+id: WuKongIM-workflow-configuration-and-deployment-update
+trigger: "when doing configuration and deployment update"
+confidence: 0.6
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/cubxxw/WuKongIM
+---
+
+# WuKongIM Workflow Configuration And Deployment Update
+
+## Action
+
+Follow the configuration-and-deployment-update workflow:
+1. Edit config/wk.yaml, docker-compose.yaml, Dockerfile, or Makefile
+2. Optionally update related Go files to support config changes
+3. Commit with 'feat:' or 'fix:' message
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~2x per month
+- Files: config/wk.yaml, docker-compose.yaml, Dockerfile
+
+---
+id: WuKongIM-workflow-ci-cd-github-actions-update
+trigger: "when doing ci cd github actions update"
+confidence: 0.6
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/cubxxw/WuKongIM
+---
+
+# WuKongIM Workflow Ci Cd Github Actions Update
+
+## Action
+
+Follow the ci-cd-github-actions-update workflow:
+1. Edit or add files in .github/workflows/ and/or slsa/ directories
+2. Optionally update related documentation
+3. Commit with 'update' or 'feat:' message
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~2x per month
+- Files: .github/workflows/*.yml, .slsa-goreleaser.yml, slsa/*.yml
+
+---
+id: wukongim-instinct-file-naming-camelcase
+trigger: "When creating or renaming a file in the codebase"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: cubxxw/WuKongIM
+---
+
+# Wukongim Instinct File Naming Camelcase
+
+## Action
+
+Name the file using camelCase (e.g., myFile.go)
+
+## Evidence
+
+- Pattern in codeStyle.namingConventions.files
+- Observed in internal/server/model.go
+
+---
+id: wukongim-instinct-function-naming-camelcase
+trigger: "When defining a new function"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: cubxxw/WuKongIM
+---
+
+# Wukongim Instinct Function Naming Camelcase
+
+## Action
+
+Name the function using camelCase (e.g., processMessage)
+
+## Evidence
+
+- Pattern in codeStyle.namingConventions.functions
+- Seen in internal/server/processor.go
+
+---
+id: wukongim-instinct-class-naming-pascalcase
+trigger: "When defining a new struct or class"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: cubxxw/WuKongIM
+---
+
+# Wukongim Instinct Class Naming Pascalcase
+
+## Action
+
+Name the struct/class using PascalCase (e.g., MessageProcessor)
+
+## Evidence
+
+- Pattern in codeStyle.namingConventions.classes
+- Seen in internal/server/model.go
+
+---
+id: wukongim-instinct-constant-naming-screaming-snake-case
+trigger: "When defining a constant"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: cubxxw/WuKongIM
+---
+
+# Wukongim Instinct Constant Naming Screaming Snake Case
+
+## Action
+
+Name the constant using SCREAMING_SNAKE_CASE (e.g., MAX_RETRIES)
+
+## Evidence
+
+- Pattern in codeStyle.namingConventions.constants
+- Seen in internal/server/const.go
+
+---
+id: wukongim-instinct-import-style-relative
+trigger: "When importing modules in Go files"
+confidence: 0.7
+domain: code-style
+source: repo-analysis
+source_repo: cubxxw/WuKongIM
+---
+
+# Wukongim Instinct Import Style Relative
+
+## Action
+
+Use relative import paths
+
+## Evidence
+
+- Pattern in codeStyle.importStyle
+- Seen in internal/server/processor.go
+
+---
+id: wukongim-instinct-export-style-mixed
+trigger: "When exporting functions or structs"
+confidence: 0.6
+domain: code-style
+source: repo-analysis
+source_repo: cubxxw/WuKongIM
+---
+
+# Wukongim Instinct Export Style Mixed
+
+## Action
+
+Use both explicit and implicit export styles as appropriate
+
+## Evidence
+
+- Pattern in codeStyle.exportStyle
+- Seen in internal/server/model.go
+
+---
+id: wukongim-instinct-test-location-separate
+trigger: "When adding or updating tests"
+confidence: 0.8
+domain: testing
+source: repo-analysis
+source_repo: cubxxw/WuKongIM
+---
+
+# Wukongim Instinct Test Location Separate
+
+## Action
+
+Place test files in separate directories or with *_test.go suffix
+
+## Evidence
+
+- Pattern in architecture.folderStructure.testLocation
+- Seen in feature-development workflow
+
+---
+id: wukongim-instinct-tdd-pattern
+trigger: "When developing a new feature or fixing a bug"
+confidence: 0.7
+domain: testing
+source: repo-analysis
+source_repo: cubxxw/WuKongIM
+---
+
+# Wukongim Instinct Tdd Pattern
+
+## Action
+
+Write a failing test first, then implement code to pass the test, then refactor if needed
+
+## Evidence
+
+- test-driven-development workflow
+- Commits: 'test: add tests for user validation', 'feat: implement user validation'
+
+---
+id: wukongim-instinct-test-file-naming
+trigger: "When writing a test file"
+confidence: 0.8
+domain: testing
+source: repo-analysis
+source_repo: cubxxw/WuKongIM
+---
+
+# Wukongim Instinct Test File Naming
+
+## Action
+
+Name the test file with *_test.go suffix (for Go) or .test.ts/.spec.ts (for TypeScript)
+
+## Evidence
+
+- Pattern in workflows.filesInvolved: '**/*.test.*', '**/*.spec.*'
+- Seen in src/utils/validation.test.ts
+
+---
+id: wukongim-instinct-git-commit-conventional
+trigger: "When making a git commit"
+confidence: 0.9
+domain: git
+source: repo-analysis
+source_repo: cubxxw/WuKongIM
+---
+
+# Wukongim Instinct Git Commit Conventional
+
+## Action
+
+Format the commit message as <type>: <description>, where type is feat, fix, or docs
+
+## Evidence
+
+- Pattern in commits.prefixes
+- Examples: 'feat: code optimization', 'docs: update readme', 'fix: 调整配置和修复错误协议'
+
+---
+id: wukongim-instinct-git-commit-average-length
+trigger: "When writing a commit message"
+confidence: 0.6
+domain: git
+source: repo-analysis
+source_repo: cubxxw/WuKongIM
+---
+
+# Wukongim Instinct Git Commit Average Length
+
+## Action
+
+Keep the commit message concise, around 19 characters on average
+
+## Evidence
+
+- Pattern in commits.averageLength
+- Examples: 'feat: code optimization'
+
+---
+id: wukongim-instinct-update-readme-and-docs
+trigger: "When someone wants to update documentation, add diagrams, or clarify usage"
+confidence: 0.95
+domain: workflow
+source: repo-analysis
+source_repo: cubxxw/WuKongIM
+---
+
+# Wukongim Instinct Update Readme And Docs
+
+## Action
+
+Edit README.md/README_CN.md/README_EN.md or docs/*, then commit with a 'docs/update' message
+
+## Evidence
+
+- update-readme-and-docs workflow
+- Commits: 'docs: update readme'
+
+---
+id: wukongim-instinct-code-optimization-or-refactor
+trigger: "When someone wants to improve code quality, performance, or structure without adding major new features"
+confidence: 0.9
+domain: workflow
+source: repo-analysis
+source_repo: cubxxw/WuKongIM
+---
+
+# Wukongim Instinct Code Optimization Or Refactor
+
+## Action
+
+Edit files in internal/server/ and pkg/, update go.mod/go.sum if needed, commit with 'feat: code optimization' or similar
+
+## Evidence
+
+- code-optimization-or-refactor workflow
+- Commits: 'feat: code optimization'
+
+---
+id: wukongim-instinct-feature-development-multi-module
+trigger: "When someone wants to add a significant new capability or protocol support"
+confidence: 0.85
+domain: workflow
+source: repo-analysis
+source_repo: cubxxw/WuKongIM
+---
+
+# Wukongim Instinct Feature Development Multi Module
+
+## Action
+
+Edit/add files in internal/server/ and pkg/, update/add tests, optionally update README/config, commit with 'feat:' message
+
+## Evidence
+
+- feature-development-with-multi-module-touch workflow
+- Commits: 'feat: add linux epoll'
+
+---
+id: wukongim-instinct-configuration-and-deployment-update
+trigger: "When someone wants to change how the app is configured or deployed"
+confidence: 0.85
+domain: workflow
+source: repo-analysis
+source_repo: cubxxw/WuKongIM
+---
+
+# Wukongim Instinct Configuration And Deployment Update
+
+## Action
+
+Edit config/wk.yaml, docker-compose.yaml, Dockerfile, or Makefile, optionally update related Go files, commit with 'feat:' or 'fix:' message
+
+## Evidence
+
+- configuration-and-deployment-update workflow
+- Commits: 'fix: 调整配置和修复错误协议'
+
+---
+id: wukongim-instinct-ci-cd-github-actions-update
+trigger: "When someone wants to change the build, release, or CI/CD process"
+confidence: 0.9
+domain: workflow
+source: repo-analysis
+source_repo: cubxxw/WuKongIM
+---
+
+# Wukongim Instinct Ci Cd Github Actions Update
+
+## Action
+
+Edit/add files in .github/workflows/ and/or slsa/, optionally update related docs, commit with 'update' or 'feat:' message
+
+## Evidence
+
+- ci-cd-github-actions-update workflow
+- Pattern in files: .github/workflows/*.yml
+
